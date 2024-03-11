@@ -1,5 +1,8 @@
 import { styled } from "@mui/material";
 import RatingList from "./RatingList";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { toTopAnimation } from "../utils/motion";
 
 const TestimonialsItem = styled("div")(({}) => ({
   display: "flex",
@@ -64,9 +67,19 @@ const UserSubtitle = styled("div")(({ theme }) => ({
   color: "rgba(74, 85, 108, 0.5)",
 }));
 
+const MTestimonialsItem = motion(TestimonialsItem);
+
 const TestimonialsCard = ({ boldText, text, img, name, subName }) => {
+  const { ref, inView } = useInView({ triggerOnce: true });
+
   return (
-    <TestimonialsItem>
+    <MTestimonialsItem
+      ref={ref}
+      initial="hidden"
+      variants={toTopAnimation}
+      animate={inView ? "visible" : "hidden"}
+      transition={{ duration: 1 }}
+    >
       <Description>
         {boldText ? <BoldDescr>{boldText}</BoldDescr> : ""}
         {text}
@@ -77,7 +90,7 @@ const TestimonialsCard = ({ boldText, text, img, name, subName }) => {
         <UserSubtitle>{subName}</UserSubtitle>
         <RatingList />
       </UserWrapper>
-    </TestimonialsItem>
+    </MTestimonialsItem>
   );
 };
 

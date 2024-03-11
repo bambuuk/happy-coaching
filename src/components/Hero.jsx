@@ -1,6 +1,8 @@
 import { styled } from "@mui/material";
 import { Button } from "./CustomElements";
 import fullHeroImg from "../assets/fullHeroImg.png";
+import { motion } from "framer-motion";
+import { leftShowing, rightShowing } from "../utils/motion";
 
 const HeroUI = styled("section")(({}) => ({
   width: "100%",
@@ -162,11 +164,19 @@ const HeroImg = styled("img")(({}) => ({
   objectFit: "cover",
 }));
 
+const LeftShowingFirstBlock = motion(FirstBlock);
+const RightShowingSecondBlock = motion(SecondBlock);
+
 const Hero = () => {
   return (
     <HeroUI>
       <HeroWrapper>
-        <FirstBlock>
+        <LeftShowingFirstBlock
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={leftShowing}
+        >
           <FirstBlockWrapper>
             <Title>Results that speak for themselves</Title>
             <Description>
@@ -184,15 +194,20 @@ const Hero = () => {
               <FormBtn>Get free guide</FormBtn>
             </Form>
           </FirstBlockWrapper>
-        </FirstBlock>
+        </LeftShowingFirstBlock>
 
-        <SecondBlock>
+        <RightShowingSecondBlock
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={rightShowing}
+        >
           <SecondBlockWrapper>
             <ImgWrapper>
               <HeroImg src={fullHeroImg} alt="" />
             </ImgWrapper>
           </SecondBlockWrapper>
-        </SecondBlock>
+        </RightShowingSecondBlock>
       </HeroWrapper>
     </HeroUI>
   );

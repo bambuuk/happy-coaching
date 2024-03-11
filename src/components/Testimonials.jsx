@@ -2,6 +2,8 @@ import { styled } from "@mui/material";
 import { Button, CustomContainer } from "./CustomElements";
 import { testimonialsInfo } from "../assets/data/data";
 import TestimonialsCard from "./TestimonialsCard";
+import { toTopAnimation } from "../utils/motion";
+import { motion } from "framer-motion";
 
 const TestimonialsUI = styled("section")(({}) => ({
   width: "100%",
@@ -83,21 +85,29 @@ const TestimonialsList = styled("div")(({ theme }) => ({
   },
 }));
 
+const MTitleBlock = motion(TitleBlock);
+
 const Testimonials = () => {
   return (
     <TestimonialsUI>
       <CustomContainer>
-        <TitleBlock>
+        <MTitleBlock
+          variants={toTopAnimation}
+          custom={1}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           <TitleWrapper>
             <SubTitle>Testimonials</SubTitle>
             <Title>Results that speak for themselves</Title>
           </TitleWrapper>
           <BtnBlock>Get started</BtnBlock>
-        </TitleBlock>
+        </MTitleBlock>
 
         <TestimonialsList>
           {testimonialsInfo.map(
-            ({ boldText, text, img, id, name, subName }) => {
+            ({ boldText, text, img, id, name, subName }, index) => {
               return (
                 <TestimonialsCard
                   key={id}
@@ -106,6 +116,7 @@ const Testimonials = () => {
                   img={img}
                   name={name}
                   subName={subName}
+                  index={index}
                 />
               );
             }
