@@ -1,11 +1,17 @@
+import { ThemeProvider } from "@mui/material";
 import Header from "./components/Header";
-import Promo from "./components/Promo";
+import Hero from "./components/Hero";
+import { theme } from "./theme";
 
 function App() {
   return (
     <>
-      <Header />
-      <Promo />
+      <ThemeProvider theme={theme}>
+        <Header />
+        <main>
+          <Hero />
+        </main>
+      </ThemeProvider>
     </>
   );
 }
