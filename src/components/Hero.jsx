@@ -33,14 +33,19 @@ const FirstBlockWrapper = styled("div")(({ theme }) => ({
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  margin: "129.5px 64px 0 30px",
+  margin: "129.5px 64px 0 32px",
   [theme.breakpoints.down(1280)]: {
-    margin: "40px 30px 0 30px",
+    margin: "40px 30px 0 32px",
   },
   [theme.breakpoints.down(1024)]: {
     alignItems: "center",
     maxWidth: "none",
-    margin: "40px 30px",
+    margin: "40px 32px",
+  },
+  [theme.breakpoints.down("sm")]: {
+    alignItems: "center",
+    maxWidth: "none",
+    margin: "40px 20px",
   },
 }));
 
