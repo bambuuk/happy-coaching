@@ -9,4 +9,8 @@ export const Button = styled("button")(({}) => ({
   borderRadius: "4px",
   padding: "11px 16px",
   backgroundColor: "#20ad96",
+  transition: "all 0.3s",
+  "&:hover": {
+    backgroundColor: "#105a4e",
+  },
 }));

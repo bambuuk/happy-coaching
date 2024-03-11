@@ -65,6 +65,10 @@ const NavigationItem = styled("li")(({}) => ({
   flexShrink: 0,
   whiteSpace: "nowrap",
   cursor: "pointer",
+  transition: "color 0.3s",
+  "&:hover": {
+    color: "#20ad96",
+  },
 }));
 
 const MenuBtn = styled(Button)(({ theme }) => ({
