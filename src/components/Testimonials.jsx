@@ -58,6 +58,7 @@ const Title = styled("h2")(({ theme }) => ({
 }));
 
 const BtnBlock = styled(Button)(({ theme }) => ({
+  fontFamily: theme.typography.inter,
   maxWidth: "225px",
   width: "100%",
   height: "48px",

@@ -112,7 +112,7 @@ const Input = styled("input")(({ theme }) => ({
   borderRadius: "8px",
   height: "48px",
   width: "100%",
-  fontFamily: theme.typography.fontFamily,
+  fontFamily: theme.typography.inter,
   fontWeight: 400,
   fontSize: "16px",
   lineHeight: "150%",
@@ -125,7 +125,7 @@ const Input = styled("input")(({ theme }) => ({
 const PrivacyPolicyBlock = styled("div")(({ theme }) => ({
   display: "flex",
   flexWrap: "wrap",
-  fontFamily: theme.typography.fontFamily,
+  fontFamily: theme.typography.inter,
   fontWeight: 400,
   fontSize: "14px",
   lineHeight: "143%",
@@ -138,8 +138,9 @@ const PrivacyPolicyLink = styled("a")(({}) => ({
   color: "#667085",
 }));
 
-const FormBtn = styled(Button)(({}) => ({
+const FormBtn = styled(Button)(({ theme }) => ({
   width: "100%",
+  fontFamily: theme.typography.inter,
 }));
 
 const SecondBlock = styled("div")(({}) => ({
